@@ -37,15 +37,9 @@ function compareResults(result1,result2){
 	var count = 0;
 	loop1:for(var i=0;i<result1.length;i++)
 	{
-<<<<<<< HEAD
 		var arr1 = JSON.parse(result1[i].spec_id);
-=======
 		var out = "";
 		
-		loop1:for(var i=0;i<result.length;i++)
-		{
-			var arr1 = JSON.parse(result[i].spec_id);
->>>>>>> origin/master
 		if(arr1['modelid'] && arr1['modelid']!="-1")
 		{
 			arr1['modelid'] =arr1['modelid'].replace(/(\(.*?\))/g, '').split("/")[0].replace(/[^a-z\d]+/gi, "");
@@ -68,7 +62,6 @@ function compareResults(result1,result2){
 				
 				if ( funcs.decodeRules(arr1,arr2,rules['laptops'][k]) )
 				{
-<<<<<<< HEAD
 					out += result1[i].title+ "::"+ result2[j].title+"\n";
 					count++;
 					//out += result[i].product_identifier+ "::"+ snapdealResult[j].product_identifier+"\n";
@@ -81,7 +74,6 @@ function compareResults(result1,result2){
 					// if(count>5)
 						// break loop1;
 					break loop2;
-=======
 					var arr2 = JSON.parse(result1[j].spec_id);
 					if(arr2['modelid'] && arr2['modelid']!="-1")
 						arr2['modelid'] =arr2['modelid'].split("/")[0].replace(/(\(.*?\))/g, '').replace(/[^a-z\d]+/gi, "");
@@ -120,51 +112,10 @@ function compareResults(result1,result2){
 					
 					}
 					*/
->>>>>>> origin/master
 				}
-				
-				
-				/*
-					if( keyAndEqualExists ("brand",arr1,arr1["brand"],arr2,arr2["brand"]) )
-				{
-				if( keyAndEqualExists("modelname",arr1,arr1["modelname"],arr2,arr2["modelname"]) && keyAndEqualExists("modelid",arr1,arr1["modelid"],arr2,arr2["modelid"]) )
-				{
-				out += result[i].title+ "::"+ snapdealResult[j].title+"\n";
-				}
-				else if( arr1.hasOwnProperty("modelid") && arr2.hasOwnProperty("title") && substringExists(arr1["modelid"],arr2["title"]) && keyAndEqualExists("cpu",arr1,arr1["cpu"],arr2,arr2["cpu"]) && keyAndEqualExists("ram",arr1,arr1["ram"],arr2,arr2["ram"]) && keyAndEqualExists("hdd",arr1,arr1["hdd"],arr2,arr2["hdd"]) && keyAndEqualExists("os",arr1,arr1["os"],arr2,arr2["os"]) && keyAndEqualExists("screentype",arr1,arr1["screentype"],arr2,arr2["screentype"]))
-				{
-				out += result[i].title+ "::"+ snapdealResult[j].title+"\n";
-				}
-				else if( keyAndSubstringExists("modelid",arr1,arr1["modelid"],arr2,arr2["modelid"]) && keyAndSubstringExists("cpu",arr1,arr1["cpu"],arr2,arr2["cpu"]) && keyAndSubstringExists("ram",arr1,arr1["ram"],arr2,arr2["ram"]) && keyAndSubstringExists("hdd",arr1,arr1["hdd"],arr2,arr2["hdd"])  && keyAndSubstringExists("os",arr1,arr1["os"],arr2,arr2["os"]) && keyAndEqualExists("screentype",arr1,arr1["screentype"],arr2,arr2["screentype"]) )
-				{
-				
-				out += result[i].title+ "::"+ snapdealResult[j].title+"\n";
-				
-				}
-				else if( arr1.hasOwnProperty("modelname") && arr1.hasOwnProperty("modelid") && arr2.hasOwnProperty("title") && substringExists(arr1["modelname"],arr2["title"]) && substringExists(arr1["modelid"],arr2["title"]) && keyAndSubstringExists("cpu",arr1,arr1["cpu"],arr2,arr2["cpu"]) && keyAndSubstringExists("ram",arr1,arr1["ram"],arr2,arr2["ram"]) && keyAndSubstringExists("hdd",arr1,arr1["hdd"],arr2,arr2["hdd"]) && keyAndSubstringExists("os",arr1,arr1["os"],arr2,arr2["os"]) && keyAndEqualExists("screentype",arr1,arr1["screentype"],arr2,arr2["screentype"]) )
-				{
-				out += result[i].title+ "::"+ snapdealResult[j].title+"\n";
-				}
-				
-				}
-				*/
 			}
-			
-			
 		}
-<<<<<<< HEAD
 	}
-=======
-		fs.appendFile('laptops_match.txt', out, function (err) {if (err) return console.log(err);});
-		var d1 = new Date();
-			var stopTime = d1.getTime();
-			var elapsedTime = stopTime - startTime;
-			console.log('completed in '+elapsedTime);
-		//process.exit(0);
-		
-	});
->>>>>>> origin/master
-	
 	fs.appendFile('laptops_match.txt', out, function (err) {if (err) return console.log(err);});
 	var d1 = new Date();
 		var stopTime = d1.getTime();
