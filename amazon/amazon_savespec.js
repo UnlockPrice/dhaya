@@ -30,7 +30,7 @@ exports.saveSpecifications = function(productIndex,obj,category, callback){
 			count++;
 		}
 		if(count==0){
-		callback(productIndex, '');
+		callback(productIndex, '',obj);
 		return;
 		}
 	pool.getConnection(function(err,connection){
@@ -43,6 +43,7 @@ exports.saveSpecifications = function(productIndex,obj,category, callback){
 		
 		var specsArr=[];
 		var index=0;
+		var finalSpecId=1;
 		for(var key in obj){
 		if(obj[key]=='X'){
 		//console.log('got the x');
@@ -64,13 +65,13 @@ exports.saveSpecifications = function(productIndex,obj,category, callback){
 				//console.log('output'+parseSpecId(result));
 				//console.log(result[0][0].specId);
 				var specId = result[0][0].specId;
-				specsArr[index]=specId;
+				finalSpecId *= parseInt(specId);
 				index++;
 				if(count==counter){
 					connection.release();
 					console.log('connection released');
-					var specIdStr = specsArr.join('_');
-					callback(productIndex, specIdStr);
+					var specIdStr = finalSpecId;
+					callback(productIndex, specIdStr,obj);
 				}
 				//console.log(outparam);
 				console.log('query ended');	

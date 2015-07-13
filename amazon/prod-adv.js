@@ -123,16 +123,16 @@ function getSpecCallBack(productIndex, obj,category){
 	amazon_savespec.saveSpecifications(productIndex,obj,category, saveSpecCallBack);
 }
 
-function saveSpecCallBack(productIndex, specId){
+function saveSpecCallBack(productIndex, specId,specObj){
 	productCounter++;
-	console.log(specId);
+	//console.log(specId);
 	//return;
 	var time = new Date();
 	var jsonDate = time.toJSON();
 		var specIdStr = specId;
 		console.log('specStr'+specIdStr);
 		//console.log('totalSpecsId:'+productSpecId);
-		
+		var specObjStr = JSON.stringify(specObj); 
 		
 		var OfferSummary = productList[productIndex].OfferSummary[0];
 		var productAttributes = productList[productIndex].ItemAttributes[0];
@@ -144,7 +144,7 @@ function saveSpecCallBack(productIndex, specId){
 		// console.log('productindex:'+productIndex);
 		// console.log(productList[productIndex].ASIN);
 		var maxprice = productAttributes.ListPrice!=undefined?productAttributes.ListPrice[0].Amount:OfferSummary.LowestNewPrice[0].Amount;
-		var sql = 'insert into `sepp_product_amazon` (`product_identifier`,`spec_id`,`product_brand`,`title`,`inStock`,`manufacturer_id`,`shipping`,`mrp`,`selling_price`,`date_added`,`date_modified`,`viewed`,`emi_available`,`cod_available`,`image`,`discount_percentage`,`product_url`) values ('+mysql.escape(productList[productIndex].ASIN[0])+','+mysql.escape(specIdStr)+','+mysql.escape(productAttributes.Brand)+','+mysql.escape(productAttributes.Title)+',1,1,1,'+maxprice/100+','+OfferSummary.LowestNewPrice[0].Amount/100+','+mysql.escape(jsonDate)+','+mysql.escape(jsonDate)+','+1+','+1+','+1+','+mysql.escape(imageSet.MediumImage[0].URL[0])+','+mysql.escape(1)+','+mysql.escape(productList[productIndex].DetailPageURL)+')';
+		var sql = 'insert into `sepp_product_amazon` (`product_identifier`,`spec_id`,`prime_id`,`product_brand`,`title`,`inStock`,`manufacturer_id`,`shipping`,`mrp`,`selling_price`,`date_added`,`date_modified`,`viewed`,`emi_available`,`cod_available`,`image`,`discount_percentage`,`product_url`) values ('+mysql.escape(productList[productIndex].ASIN[0])+','+mysql.escape(specObjStr)+','+specId+','+mysql.escape(productAttributes.Brand)+','+mysql.escape(productAttributes.Title)+',1,1,1,'+maxprice/100+','+OfferSummary.LowestNewPrice[0].Amount/100+','+mysql.escape(jsonDate)+','+mysql.escape(jsonDate)+','+1+','+1+','+1+','+mysql.escape(imageSet.MediumImage[0].URL[0])+','+mysql.escape(1)+','+mysql.escape(productList[productIndex].DetailPageURL)+')';
 		//console.log(sql);
 		pool.query(sql, function(err, rows, fields) 
 		{
