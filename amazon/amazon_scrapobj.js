@@ -7,7 +7,8 @@ laptops:
 "ssdcapacity":"ssd",
 "OperatingSystem":"os",
 "graphicscoprocessor":"graphics",
-"notebookdisplaytechnology":"touch"
+"notebookdisplaytechnology":"touch",
+"itemmodelnumber":"modelid"
 },
 televisions: {"brand":"brand","screentype":"screentype","displaysize(cm)":"displaysize(cm)","displaysize(inch)":"displaysize(inch)","3d":"3d","modelname":"modelname","hdtechnology":"hdtechnology","resolution":"resolution","launchyear":"launchyear","smarttv":"smarttv"},
 mobiles: {"brand":"brand","keypad":"keypad","model":"modelname","modelid":"modelid","Multitouch":"touchscreen","sims":"simtype","gprs":"gprs","3g":"3g","wifi":"wifi","bluetooth":"bluetooth","headsetdesign":"headsetdesign"},
@@ -15,3 +16,5 @@ mobile_accessories:{"brand":"brand","model":"modelid","type":"type","cable":"cab
 men_cloting:{"type":"type","sleeve":"sleeve","occasion":"occasion","fabric":"fabric"},
 kitchen_appliances:{"brand":"brand","type":"type"}
 };
+
+exports.excluded ={laptops:["modelname","modelid"]};

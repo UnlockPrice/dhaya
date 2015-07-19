@@ -9,6 +9,8 @@ var minResponseLimit = 70;
 var productList=[];
 var productCounter=0; 
 var finalTotalResults = 0;
+var d = new Date();
+var startTime = d.getTime();
 //console.log('finalTotalResults:'+finalTotalResults);
 amazon_savespec.initialize();
 var mysql      = require('mysql');

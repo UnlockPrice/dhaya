@@ -1,3 +1,5 @@
+var excluded = require('./amazon_scrapobj.js').excluded;
+
 var specId='';
 var http,mysql,pool;
 //initialize();
@@ -45,14 +47,20 @@ exports.saveSpecifications = function(productIndex,obj,category, callback){
 		var index=0;
 		var finalSpecId=1;
 		for(var key in obj){
-		if(obj[key]=='X'){
-		//console.log('got the x');
-			specsArr[index]='X';
-			index++;
-			counter++
-			continue;
-		}
-		var myparams = "'"+category+"','"+key+"','"+obj[key]+"'";
+			if((category in excluded) && ( excluded[category].indexOf(key)!= -1)){
+			//console.log('got the x');
+				index++;
+				counter++
+				if(count==counter){
+					connection.release();
+					console.log('connection released');
+					finalSpecId = finalSpecId==1?-1:finalSpecId;
+					callback(productIndex, finalSpecId,obj);
+					return;
+				}
+				continue;
+			}
+			var myparams = "'"+category+"','"+key+"','"+obj[key]+"'";
 			connection.query("call sp_saveSpecification("+myparams+",@specid)", function(err, result) {
 				if (err) {
 				console.log('ERROR: '+err);
@@ -70,8 +78,8 @@ exports.saveSpecifications = function(productIndex,obj,category, callback){
 				if(count==counter){
 					connection.release();
 					console.log('connection released');
-					var specIdStr = finalSpecId;
-					callback(productIndex, specIdStr,obj);
+					finalSpecId = finalSpecId==1?-1:finalSpecId;
+					callback(productIndex, finalSpecId,obj);
 				}
 				//console.log(outparam);
 				console.log('query ended');	
