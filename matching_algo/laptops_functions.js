@@ -98,7 +98,7 @@ function keyAndLCSUExists(arr1,key1,arr2,key2)
 	if(  arr1.hasOwnProperty(key1) && arr2.hasOwnProperty(key2) && arr1[key1] && arr2[key2]  && arr1[key1]!="-1" && arr2[key2]!="-1" )
 	{
 		var minlen = ( arr1[key1].length < arr2[key2].length ) ? (arr1[key1].length):(arr2[key2].length);
-		if( findLongestCommonSubstring(arr1[key1],arr2[key2]).length >= minlen-2 )
+		if( findLongestCommonSubstring(arr1[key1],arr2[key2]).length >= minlen-3 )
 			return true;
 		else
 			return false;

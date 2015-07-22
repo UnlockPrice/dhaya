@@ -8,3 +8,5 @@ laptops:
 // ,
 // "( ( brand EQ brand ) AND ( ( modelid ASE modelid ) OR ( modelid SS modelid ) OR ( modelid LCSU modelid ) ) AND ( cpu SU cpu ) AND ( ram SU ram ) AND ( hdd SU hdd ) AND ( os SU os ) AND ( graphics SU graphics ) AND ( screentype EQ screentype ) )"
 };
+
+
