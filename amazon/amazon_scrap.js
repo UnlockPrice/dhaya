@@ -63,7 +63,7 @@ exports.scrapByCrawler=function(productIndex,url,ProductDetails,category, callba
 					   if(ProductDetails.hasOwnProperty(key))	
 					   {
 						   console.log(key+' test data '+ProductDetails[key][0]);
-						   obj[key]=ProductDetails[key][0];
+						   obj[scrapobj[category][key]]=ProductDetails[key][0];
 					   }
 					}	
 					//console.log(ProductDetails);

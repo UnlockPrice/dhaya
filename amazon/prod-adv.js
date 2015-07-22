@@ -146,7 +146,8 @@ function saveSpecCallBack(productIndex, specId,specObj){
 		// console.log('productindex:'+productIndex);
 		// console.log(productList[productIndex].ASIN);
 		var maxprice = productAttributes.ListPrice!=undefined?productAttributes.ListPrice[0].Amount:OfferSummary.LowestNewPrice[0].Amount;
-		var sql = 'insert into `sepp_product_amazon` (`product_identifier`,`spec_id`,`prime_id`,`product_brand`,`title`,`inStock`,`manufacturer_id`,`shipping`,`mrp`,`selling_price`,`date_added`,`date_modified`,`viewed`,`emi_available`,`cod_available`,`image`,`discount_percentage`,`product_url`) values ('+mysql.escape(productList[productIndex].ASIN[0])+','+mysql.escape(specObjStr)+','+specId+','+mysql.escape(productAttributes.Brand)+','+mysql.escape(productAttributes.Title)+',1,1,1,'+maxprice/100+','+OfferSummary.LowestNewPrice[0].Amount/100+','+mysql.escape(jsonDate)+','+mysql.escape(jsonDate)+','+1+','+1+','+1+','+mysql.escape(imageSet.MediumImage[0].URL[0])+','+mysql.escape(1)+','+mysql.escape(productList[productIndex].DetailPageURL)+')';
+		var category='laptops'; 
+		var sql = 'insert into `sepp_product_amazon` (`product_identifier`,`spec_id`,`prime_id`,`product_brand`,`title`,`inStock`,`manufacturer_id`,`shipping`,`mrp`,`selling_price`,`date_added`,`date_modified`,`viewed`,`emi_available`,`cod_available`,`image`,`discount_percentage`,`product_url`,`category`) values ('+mysql.escape(productList[productIndex].ASIN[0])+','+mysql.escape(specObjStr)+','+specId+','+mysql.escape(productAttributes.Brand)+','+mysql.escape(productAttributes.Title)+',1,1,1,'+maxprice/100+','+OfferSummary.LowestNewPrice[0].Amount/100+','+mysql.escape(jsonDate)+','+mysql.escape(jsonDate)+','+1+','+1+','+1+','+mysql.escape(imageSet.MediumImage[0].URL[0])+','+mysql.escape(1)+','+mysql.escape(productList[productIndex].DetailPageURL)+','+mysql.escape(category)+')';
 		//console.log(sql);
 		pool.query(sql, function(err, rows, fields) 
 		{
