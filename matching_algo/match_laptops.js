@@ -57,7 +57,7 @@ function compareResults(result1,result2,result3){
 		}
 		arr1["title"]=result1[i].title;
 		snapdealCurrentMatch='';
-		loop2:for(var k=0;k<rules['laptops'].length;k++)
+		loop2:for(var k=0;k<rules['flipkart_snapdeal']['laptops'].length;k++)
 		{
 			loop3:for(var j=0;j<result2.length;j++)
 			{
@@ -73,7 +73,7 @@ function compareResults(result1,result2,result3){
 					arr2["title"] = result2[j].title;
 					//console.log(rules['laptops'].length);
 					
-					if ( funcs.decodeRules(arr1,arr2,rules['laptops'][k]) )
+					if ( funcs.decodeRules(arr1,arr2,rules['flipkart_snapdeal']['laptops'][k]) )
 					{
 						//out += result1[i].title+ "::"+ result2[j].title+"\n";
 						count++;
@@ -86,7 +86,7 @@ function compareResults(result1,result2,result3){
 		}
 		amazonCurrentMatch='';
 		//console.log('amazon length'+result3.length);
-		loop4:for(var k=0;k<rules['laptops'].length;k++)
+		loop4:for(var k=0;k<rules['flipkart_amazon']['laptops'].length;k++)
 		{
 			loop5:for(var j=0;j<result3.length;j++)
 			{
@@ -103,7 +103,7 @@ function compareResults(result1,result2,result3){
 					arr2["title"] = result3[j].title;
 					//console.log(rules['laptops'].length);
 					
-					if ( funcs.decodeRules(arr1,arr2,rules['laptops'][k]) )
+					if ( funcs.decodeRules(arr1,arr2,rules['flipkart_amazon']['laptops'][k]) )
 					{
 						//out += result1[i].title+ "::"+ result3[j].title+"\n";
 						count++;

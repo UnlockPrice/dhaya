@@ -116,7 +116,7 @@ function substringExists(str1,str2)
 }
 function keyAndSubstringExists(arr1,key1,arr2,key2)
 {
-	if( ( arr1.hasOwnProperty(key1) && arr2.hasOwnProperty(key2)) && arr1[key1] && arr2[key2] && arr1[key1]!="-1" && arr2[key2]!="-1" && ((arr1[key1].indexOf(arr2[key2])!=-1) || (arr2[key2].indexOf(arr1[key1])!=-1)) )
+	if( ( arr1.hasOwnProperty(key1) && arr2.hasOwnProperty(key2)) && arr1[key1] && arr2[key2] && arr1[key1]!="-1" && arr2[key2]!="-1" && ((arr1[key1].toUpperCase().indexOf(arr2[key2].toUpperCase())!=-1) || (arr2[key2].toUpperCase().indexOf(arr1[key1].toUpperCase())!=-1)) )
 	return true;
 	else
 	return rulesExceptions(arr1,key1,arr2,key2);
@@ -146,7 +146,7 @@ function keyAndSubstringExists_rare(arr1,key1,arr2,key2)
 
 function keyAndEqualExists(arr1,key1,arr2,key2)
 {
-	if( arr1.hasOwnProperty(key1) && arr2.hasOwnProperty(key2) && arr1[key1] && arr2[key2] && arr1[key1]!="-1" && arr2[key2]!="-1" && (arr1[key1]==arr2[key2]) ) 
+	if( arr1.hasOwnProperty(key1) && arr2.hasOwnProperty(key2) && arr1[key1] && arr2[key2] && arr1[key1]!="-1" && arr2[key2]!="-1" && (arr1[key1].toUpperCase()==arr2[key2].toUpperCase()) ) 
 	return true;
 	else
 	return rulesExceptions(arr1,key1,arr2,key2);
